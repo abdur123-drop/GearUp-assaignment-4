@@ -8,6 +8,13 @@ model User{
     phone String?
     address String?
 
+    gearItem GearItem[]
+    payment Payment[]
+    rentelOrder RentalOrder[]
+    review Review[]
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    @@map("users")
 }
