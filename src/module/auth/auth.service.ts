@@ -65,7 +65,7 @@ const logInFromDB = async(payload: ILOGIN)=>{
         id: user.id,
         name: user.name,
         email: user.email,
-        password: user.password
+        role: user.role
     }
 
     const accessToken = jwtUtils.createToken(jwtPayload, config.jwt_access_token_secret as string, config.jwt_access_token_expires_in as SignOptions)
@@ -74,7 +74,21 @@ const logInFromDB = async(payload: ILOGIN)=>{
     }
 }
 
+const currentUserFromDB = async(email: string) =>{
+    const user = await prisma.user.findFirstOrThrow({
+        where:{
+            email
+        },
+        omit:{
+            password: true
+        }
+    })
+
+    return user
+}
+
 export const authService = {
     createUserIntoDB,
-    logInFromDB
+    logInFromDB,
+    currentUserFromDB
 }

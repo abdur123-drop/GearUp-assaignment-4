@@ -37,7 +37,20 @@ const logIn = catchAsync(async(req: Request, res: Response, next: NextFunction)=
     })
 })
 
+const currentUser = catchAsync(async(req: Request, res: Response, next: NextFunction)=>{
+    const email = req.user?.email;
+    const result = await authService.currentUserFromDB(email as string)
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: "Successfully Find Own Profile",
+        data: result
+    })
+})
+
 export const authController ={
     createUser,
-    logIn
+    logIn,
+    currentUser
 }
