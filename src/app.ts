@@ -5,6 +5,7 @@ import { notFound } from "./middleware/notFound";
 import { globalErrorHandling } from "./middleware/globalError";
 import { categoryRouter } from "./module/category/category.router";
 import { gearRouter } from "./module/gearItem/gear.router";
+import { rentelOrderROuter } from "./module/renterlOrder/rentelOrder.router";
 
 const app: Application = express()
 
@@ -19,6 +20,7 @@ app.get("/", (req: Request, res: Response)=>{
 app.use("/api/auth", authRouter)
 app.use("/api/categories", categoryRouter)
 app.use("/api/gear", gearRouter)
+app.use("/api/rental", rentelOrderROuter)
 
 
 

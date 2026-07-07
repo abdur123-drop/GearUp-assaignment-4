@@ -1,7 +1,10 @@
 import { Response } from "express";
 
 type Tmeta ={
-    price: number,
+    page: number,
+    limit: number,
+    total: number,
+    totalPages: number
 
 }
 
