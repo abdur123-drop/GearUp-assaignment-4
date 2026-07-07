@@ -6,6 +6,7 @@ import { globalErrorHandling } from "./middleware/globalError";
 import { categoryRouter } from "./module/category/category.router";
 import { gearRouter } from "./module/gearItem/gear.router";
 import { rentelOrderROuter } from "./module/renterlOrder/rentelOrder.router";
+import { paymentRouter } from "./module/payment/payment.router";
 
 const app: Application = express()
 
@@ -21,6 +22,7 @@ app.use("/api/auth", authRouter)
 app.use("/api/categories", categoryRouter)
 app.use("/api/gear", gearRouter)
 app.use("/api/rental", rentelOrderROuter)
+app.use("/api/payment", paymentRouter)
 
 
 

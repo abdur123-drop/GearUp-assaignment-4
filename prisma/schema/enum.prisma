@@ -21,4 +21,5 @@ enum OrderStatus {
   PICKED_UP
   RETURNED
   CANCELLED
+  PAID
 }

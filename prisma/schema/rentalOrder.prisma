@@ -8,6 +8,8 @@ model RentalOrder{
     endDate DateTime
     totalAmount Float
 
+    payment Payment[]
+
     status OrderStatus @default(PLACED)
     paymentStatus PaymentStatus @default(PENDING)
 

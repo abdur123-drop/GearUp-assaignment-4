@@ -2,12 +2,14 @@ model Payment{
     id String @id @default(uuid())
     rentalOrderId String
     customerId String
-    transactionId String?
+    sessionId String @unique
     amount Float
+    provider String
     status PaymentStatus @default(PENDING)
     paidAt DateTime?
 
     customer User @relation(fields: [customerId], references: [id])
+    rentalOrder RentalOrder @relation(fields: [rentalOrderId], references: [id])
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
