@@ -24,7 +24,7 @@ const createRentalIntoDB = async(payload: IRENTALCREATE, userId : string) =>{
     const endDateFormat = new Date(endDate)
 
     if(endDateFormat <= startDateFormat){
-        throw new Error("Invalid rental date")
+        throw new Error("Invalid rental date! End date must be after start date")
     }
 
     const days = Math.ceil((endDateFormat.getTime() - startDateFormat.getTime()) / (1000*60*60*24))
