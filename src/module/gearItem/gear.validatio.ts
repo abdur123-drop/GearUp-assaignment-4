@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 
-export const createGearValidationSchema = z.object({
+const createGearValidationSchema = z.object({
     body:z.object({
     name:z
 .string({
@@ -79,8 +79,105 @@ categoryId:z
 
 });
 
+
+const updateGearValidationSchema = z.object({
+
+    body:z.object({
+
+        name:z
+        .string({
+            error:"Gear name must be string"
+        })
+        .min(
+            2,
+            "Gear name must be at least 2 characters"
+        )
+        .optional(),
+
+
+        description:z
+        .string({
+            error:"Description must be string"
+        })
+        .min(
+            10,
+            "Description must be at least 10 characters"
+        )
+        .optional(),
+
+
+
+        pricePerDay:z
+        .coerce
+        .number({
+            error:"Price per day must be a number"
+        })
+        .positive(
+            "Price per day must be greater than 0"
+        )
+        .optional(),
+
+
+
+        stock:z
+        .coerce
+        .number({
+            error:"Stock must be a number"
+        })
+        .int(
+            "Stock must be an integer"
+        )
+        .positive(
+            "Stock must be greater than 0"
+        )
+        .optional(),
+
+
+
+        availableStock:z
+        .coerce
+        .number({
+            error:"Available stock must be a number"
+        })
+        .int(
+            "Available stock must be an integer"
+        )
+        .nonnegative(
+            "Available stock cannot be negative"
+        )
+        .optional(),
+
+
+
+        condition:z
+        .enum(
+            [
+                "NEW",
+                "EXCELLENT",
+                "GOOD",
+                "FAIR",
+                "POOR"
+            ],
+            {
+                error:"Invalid gear condition"
+            }
+        )
+        .optional(),
+
+
+
+        categoryId:z
+        .string({
+            error:"Category ID must be string"
+        })
+        .optional()
+
+
+    })
+
+});
+
 export const gearValidation = {
-
-createGearValidationSchema
-
+createGearValidationSchema,
+updateGearValidationSchema
 }
