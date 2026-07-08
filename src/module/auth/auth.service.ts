@@ -10,29 +10,6 @@ import { SignOptions } from "jsonwebtoken";
 const createUserIntoDB = async(payload : ICREATEUSER) =>{
     const {name, email, password, role} = payload;
 
-    if(!name){
-        throw new Error("Name is required");
-    }
-
-    if(name.length < 2){
-        throw new Error("Name At Least 2 Character Needed")
-    }
-
-    if(!email){
-        throw new Error("Email is required");
-    }
-
-    if(!email.includes("@")){
-        throw new Error("Invalid Email")
-    }
-
-    if(!password){
-        throw new Error("Password is Required")
-    }
-
-    if(password.length < 6){
-    throw new Error("Password must be at least 6 characters");
-    }
 
     const userFind = await prisma.user.findUnique({
         where: {
@@ -73,18 +50,6 @@ const createUserIntoDB = async(payload : ICREATEUSER) =>{
 
 const logInFromDB = async(payload: ILOGIN)=>{
     const {email, password} = payload;
-
-    if(!email){
-        throw new Error("Email is required");
-    }
-
-    if(!email.includes("@")){
-        throw new Error("Invalid Email")
-    }
-
-    if(!password){
-        throw new Error("Password is Required")
-    }
 
     const user = await prisma.user.findUniqueOrThrow({
         where:{

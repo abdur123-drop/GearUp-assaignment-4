@@ -2,7 +2,9 @@ import { GearItemWhereInput } from "../../../generated/prisma/models"
 import { prisma } from "../../lib/prisma"
 import { IALLGEARQUERY, IEXPORTGEAR, IUPDATEGEAR } from "./gear.interface"
 
+
 const createGearIntoDB = async(payload : IEXPORTGEAR, userId : string) =>{
+
     const user = await prisma.user.findUniqueOrThrow({
         where:{
             id: userId
