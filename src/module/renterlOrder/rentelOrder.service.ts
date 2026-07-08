@@ -55,7 +55,6 @@ const createRentalIntoDB = async(payload: IRENTALCREATE, userId : string) =>{
 
         return createRental
     })
-console.log(transactionResult);
     return transactionResult
 }
 
