@@ -2,12 +2,13 @@ import { Router } from "express";
 import { auth } from "../../middleware/auth";
 import { Role } from "../../../generated/prisma/enums";
 import { adminController } from "./admin.controller";
+import { validateRequest } from "../../middleware/validateRequest";
 
 const router = Router()
 
 router.get("/users", auth(Role.ADMIN), adminController.getAllUser)
 router.patch("/users/:id", auth(Role.ADMIN), adminController.updateUserStatus)
 router.get("/gear", auth(Role.ADMIN), adminController.getAllGear)
-router.get("/rentals", auth(Role.ADMIN), adminController.getAllRental)
+router.get("/rentals", auth(Role.ADMIN),  adminController.getAllRental)
 
 export const adminRouter = router;
