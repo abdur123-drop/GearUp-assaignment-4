@@ -15,7 +15,16 @@ const getAllUser = catchAsync(async(req: Request, res: Response, next: NextFunct
 })
 
 const updateUserStatus = catchAsync(async(req: Request, res: Response, next: NextFunction)=>{
+    const status = req.body.status;
+    const userId = req.params.id;
+    const result = await adminService.updateUserStatusIntoDB(status, userId as string)
 
+    sendResponse(res,{
+        success: true,
+        statusCode: httpStatus.OK,
+        message: "Successfully Change User Status",
+        data: result
+    })
 })
 
 const getAllGear = catchAsync(async(req: Request, res: Response, next: NextFunction)=>{
