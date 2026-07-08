@@ -5,6 +5,14 @@ import { ICATEGORY } from "./category.interface"
 // complete createCategory
 const createCategoryIntoDB = async(body: ICATEGORY) =>{
 
+    if(!body.name){
+        throw new Error("Name is Required")
+    }
+
+    if(body.name.length < 2){
+        throw new Error("Name at least 2 character")
+    }
+
     const category = await prisma.category.create({
         data:{
             ...body
@@ -33,6 +41,12 @@ const getSingleCategoryFromDB = async(categoryId: string)=>{
 
 // complete updateCategory
 const updateCategoryIntoDB = async(payload: ICATEGORY, categoryId: string)=>{
+
+    if(!payload.name){
+        throw new Error("Name is Required")
+    }
+
+
     const isCategoryExists = await prisma.category.findUnique({
         where:{
             id: categoryId

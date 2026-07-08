@@ -9,8 +9,15 @@ import { rentelOrderROuter } from "./module/renterlOrder/rentelOrder.router";
 import { paymentRouter } from "./module/payment/payment.router";
 import { reviewRouter } from "./module/review/review.router";
 import { adminRouter } from "./module/admin/admin.router";
+import cors from "cors"
+import config from "./config";
 
 const app: Application = express()
+
+app.use(cors({
+    origin: config.app_url,
+    credentials: true
+}))
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
