@@ -9,6 +9,7 @@ model RentalOrder{
     totalAmount Float
 
     payment Payment[]
+    review Review[]
 
     status OrderStatus @default(PLACED)
     paymentStatus PaymentStatus @default(PENDING)
