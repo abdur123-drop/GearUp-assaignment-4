@@ -59,7 +59,7 @@ rentalOrderId:rentalOrder.id
 }
 });
 
-await tx.payment.create({
+const paymentDetails = await tx.payment.create({
 data:{
 rentalOrderId,
 customerId:userId,
@@ -71,6 +71,7 @@ status:"PENDING"
 });
 
 return {
+    paymentDetails,
     paymentUrl: session.url,
     sessionId: session.id
 }
@@ -78,6 +79,7 @@ return {
 
 
 return {
+    paymentDetails: transactionSession.paymentDetails,
 paymentUrl: transactionSession.paymentUrl,
 sessionId: transactionSession.sessionId
 };
