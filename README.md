@@ -122,36 +122,36 @@ Example:
 
 Customer:
 Register
- ↓
+ ->
 Browse Gear
- ↓
+ ->
 Create Rental
- ↓
+ ->
 Payment
- ↓
+ ->
 Pick Up Gear
- ↓
+ ->
 Return Gear
- ↓
+ ->
 Review
 
 
 Provider:
 
 Register
- ↓
+ ->
 Add Gear
- ↓
+ ->
 Receive Order
- ↓
+ ->
 Confirm Order
- ↓
+ ->
 Update Status
 
 Admin:
-Manage Users
-Manage Gear
-Manage Rentals
+Manage Users ->
+Manage Gear ->
+Manage Rentals ->
 Create Category
 
 
@@ -159,34 +159,34 @@ Create Category
 
 Authentication
 
-POST /api/auth/register
-POST /api/auth/login
-GET /api/auth/me
+[POST /api/auth/register]
+[POST /api/auth/login]
+[GET /api/auth/me]
 
 
 Gear
 
-POST /api/gear
-GET /api/gear
-GET /api/gear/:id
-PATCH /api/gear/:id
-DELETE /api/gear/:id
+[POST /api/gear]
+[GET /api/gear]
+[GET /api/gear/:id]
+[PATCH /api/gear/:id]
+[DELETE /api/gear/:id]
 
 
 Rental
 
-POST /api/rental
-GET /api/rental
-GET /api/rental/:id
-PATCH /api/rental/status/:id
+[POST /api/rental]
+[GET /api/rental]
+[GET /api/rental/:id]
+[PATCH /api/rental/status/:id]
 
 
 Payment
 
-POST /api/payment/create
-POST /api/payment/confirm
-GET /api/payment
-GET /api/payment/:id
+[POST /api/payment/create]
+[POST /api/payment/confirm]
+[GET /api/payment]
+[GET /api/payment/:id]
 
 
 Review
